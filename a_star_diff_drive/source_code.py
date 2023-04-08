@@ -1,6 +1,8 @@
 import cv2
 from src import map
 from src import astar
+from src import visualize
+from src import ros_messenger
 import time
 
 def main():
@@ -8,6 +10,7 @@ def main():
     wheel_d = 35.4
     step = 1
     threshold = 10
+    
     while True:
         clearance = int(input("Enter the clearance values: "))
 
@@ -48,25 +51,14 @@ def main():
     a = time.time()
     
     goal_reached, parents_nodes, visited = astar.astar(start_point, goal_point, free_points, step, threshold, actions, radius, wheel_d)
-    print('Reached!')
-    print('time taken: ', time.time()-a)
-    path = astar.getPath(parents_nodes, start_point, goal_point, visited)
-    for point in path:
-            # if len(point[0]) == 3:
-            x_goal = point[0][0]
-            y_goal = point[0][1]
-            print(x_goal, y_goal)
-            for i in range(0,5):
-                for j in range(0,5):
-                    img[y_goal+j, x_goal+i] = (0,255,0)
-        
-    for i in range(len(path)-1):
-        point1 = (path[i][0][0], path[i][0][1])
-        point2 = (path[i+1][0][0], path[i+1][0][1])
-        img = cv2.line(img, point1, point2, (255,0,0), 3)
-
-        cv2.imwrite('visited.jpg', img[::-1,:,:])
-    
+    if goal_reached:
+        print('Reached!')
+        print('time taken: ', time.time()-a)
+        path = astar.getPath(parents_nodes, start_point, goal_point, visited)
+        print("Path Found! Visualizing the path")
+        visualize.viz(img, parents_nodes, visited, path, free_points)
+        print("Starting Gazebo simulation")
+        ros_messenger.velocity_pub(path, radius, wheel_d, step)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+
 import numpy as np
 import heapq as heap
 import cv2
@@ -45,10 +46,13 @@ def populate_nodes(current_node, free_points, step_size, actions, radius, wheel_
 def node_visited(thresh_nodes, current_node, threshold):
     x = current_node[0]//threshold
     y = current_node[1]//threshold
-    
-    if (x, y) in thresh_nodes:
-        return True
-    return False
+    # print(x,y)
+    # print('set: ',thresh_nodes)
+    try:
+        if (x, y) in thresh_nodes:
+            return True
+    except:
+        return False
 
 def calculate_cost(new_node, current_node, node_cost, queue, parent_nodes, cost, goal_point, threshold, new_action):
     dist = dist_between_nodes(new_node, goal_point)
@@ -85,6 +89,7 @@ def astar(start_point, goal_point, free_points, step_size, threshold, actions, r
             continue
         visited.append(current_node)
         thresh_nodes.add((current_node[0]//threshold, current_node[1]//threshold))
+        # print('set: ',thresh_nodes)
         new_nodes = populate_nodes(current_node, free_points, step_size, actions, radius, wheel_d)
         for new_node, new_action, cost in new_nodes:
             if node_visited(current_node, new_node, threshold):
