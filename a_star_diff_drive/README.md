@@ -39,6 +39,9 @@ a_star_diff_drive
 5. Once the goal is reached, the node exploration and path will be visualised using opencv.
 6. After the visualization, the turtlebot3 will start moving to the goal location.
 
+# Test cases used:
+1. start: 50 100 0, goal: 500 100, clearance: 5, RPM: 10,20
+2. start: 50 100 0, goal: 400 50, clearance: 5, RPM: 10,20
 
 project members: 
 1. Sai Surya
