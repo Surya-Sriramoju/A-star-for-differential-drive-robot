@@ -1,5 +1,12 @@
 # A-Star-for differential-drive-robot
 
+Dependencies required:
+* Ubuntu 20.04
+* Gazebo
+* ROS Noetic
+* turtlebot3 packages
+* Python packages: Numpy, opencv, queue, time
+
 libraries used in this algorithm
 * numpy
 * opencv
