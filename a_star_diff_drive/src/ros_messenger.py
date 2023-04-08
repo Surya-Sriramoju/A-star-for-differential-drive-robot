@@ -2,28 +2,28 @@ import rospy
 from geometry_msgs.msg import Twist
 import time
 
-# Method to move turtlebot on ROS Gazebo with cmd_vel topic
-def velocity_pub(direction, robot_radius, wheel_d, stepsize):
-    rospy.init_node('command_passer', anonymous=True)
-    pub_topic = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+
+def vel_pub(actions, radius, wheel_d):
+    rospy.init_node('robot_talker', anonymous=True)
+    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
     msg = Twist()
-    for _, action in direction:
+    for _, action in actions:
         cnt = 0
-        msg_publisher(msg, 0, 0, pub_topic)
-        print('Sending RPM\'s to turtlebot: ', (action[0], action[1]))
+        publishMsg(msg, 0, 0, pub)
+        print('Sending RPM\'s to robot: ', (action[0], action[1]))
         while cnt < 50:
             cnt += 1
-            v_ang = (robot_radius / wheel_d) * (action[1] - action[0])
-            v_lin = 0.5 * robot_radius * (action[0] + action[1])
-            msg_publisher(pub_topic, v_lin, v_ang, msg)
+            ang_v = (radius / wheel_d) * (action[1] - action[0])
+            lin_v = 0.5 * radius * (action[0] + action[1])
+            publishMsg(msg, lin_v, ang_v, pub)
     return True
 
 
-def msg_publisher(pub, vel_lin, vel_ang, msg):
-    msg.angular.z = vel_ang / 4.5
+def publishMsg(msg, linear_vel, angular_vel, pub):
+    msg.angular.z = angular_vel / 4.5
     msg.angular.x = 0
     msg.angular.y = 0
-    msg.linear.x = vel_lin / 455
+    msg.linear.x = linear_vel / 455
     msg.linear.y = 0
     msg.linear.z = 0
     pub.publish(msg)

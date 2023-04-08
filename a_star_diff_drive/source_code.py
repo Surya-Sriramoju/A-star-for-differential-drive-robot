@@ -10,7 +10,7 @@ def main():
     wheel_d = 35.4
     step = 1
     threshold = 10
-    
+
     while True:
         clearance = int(input("Enter the clearance values: "))
 
@@ -25,8 +25,6 @@ def main():
 
         img, image_bw = map.map(clearance, radius)
         free_points = map.free_points(image_bw)
-
-
         try:
             if ((x_start, y_start) in free_points and (x_goal, y_goal) in free_points):
                 rpm = input('Input RPMs of two wheels in format- rpm1, rpm2: \n')
@@ -57,9 +55,8 @@ def main():
         path = astar.getPath(parents_nodes, start_point, goal_point, visited)
         print("Path Found! Visualizing the path")
         visualize.viz(img, parents_nodes, visited, path, free_points)
-        print("Starting Gazebo simulation")
-        ros_messenger.velocity_pub(path, radius, wheel_d, step)
-
-
+        print("Starting Gazebo simulation!")
+        ros_messenger.vel_pub(path, radius, wheel_d)
+        print("Simulation Complete!")
 if __name__ == '__main__':
     main()
