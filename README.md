@@ -12,3 +12,11 @@ Libraries used in this algorithm
 * opencv
 * queue
 * time
+
+project members:
+
+Sai Surya Directory ID - saisurya UID -119224113
+
+Dhruv Sharma Directory ID - dhruvsh UID - 119091586
+
+Github Repo - [https://github.com/Surya-Sriramoju/A-Star-Algorithm-for-a-Mobile-Robot](https://github.com/Surya-Sriramoju/A-star-for-differential-drive-robot)
