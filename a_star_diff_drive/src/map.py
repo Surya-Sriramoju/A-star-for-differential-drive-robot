@@ -14,7 +14,7 @@ def map(clearance, radius):
     cv2.circle(map_canvas, (400, 110), 50, (150, 100, 100), -1)
     cv2.circle(map_canvas, (400, 110), 50, (255, 255, 255), 5)
 
-    cv2.rectangle(map_canvas_bw, (0, 0), (600, 200), (255, 255, 255), 5)
+    cv2.rectangle(map_canvas_bw, (0, 0), (600, 200), (255, 255, 255), block)
     cv2.rectangle(map_canvas_bw, (150, 75), (165, 200), (150, 100, 100), -1)
     cv2.rectangle(map_canvas_bw, (150, 75), (165, 200), (255, 255, 255), 5)
     cv2.rectangle(map_canvas_bw, (250, 0), (265, 125), (150, 100, 100), -1)
@@ -31,7 +31,7 @@ def map(clearance, radius):
     # # cv2.circle(map_canvas_bw, (400, 110), 50, (255, 255, 255), block)
     # map_canvas_bw = cv2.copyMakeBorder(map_canvas_bw, block, block, block, block, cv2.BORDER_CONSTANT, value=[255])
 
-    return map_canvas[::-1,:,:], map_canvas_bw[::-1,:]
+    return map_canvas, map_canvas_bw
 
 def free_points(map):
     y,x = np.where(map==0)
