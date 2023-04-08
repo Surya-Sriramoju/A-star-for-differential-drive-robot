@@ -2,10 +2,7 @@ import cv2
 from src import map
 from src import astar
 import time
-# def point(x_goal, y_goal, image):
-#     for i in range(0,5):
-#             for j in range(0,5):
-#                 image[y_goal+j, x_goal+i] = (0,255,0)
+
 def main():
     radius = 3.8
     wheel_d = 35.4
@@ -51,6 +48,8 @@ def main():
     a = time.time()
     
     goal_reached, parents_nodes, visited = astar.astar(start_point, goal_point, free_points, step, threshold, actions, radius, wheel_d)
+    print('Reached!')
+    print('time taken: ', time.time()-a)
     path = astar.getPath(parents_nodes, start_point, goal_point, visited)
     for point in path:
             # if len(point[0]) == 3:
