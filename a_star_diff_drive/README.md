@@ -35,7 +35,7 @@ a_star_diff_drive
 1. Paste the a_star_diff_drive in the src folder of ros workspace
 2. build the package using catkin_make
 3. In one terminal, paste : "roslaunch a_star_diff_drive a_star.launch", once the gazebo is launched, in another terminal, enter into the directory catkin_ws/src/a_star_diff_drive/, and execute "python3 source_code.py"
-4. Enter the clearance value, start position, goal position.
+4. Enter the clearance value, start position, goal position and RPM values.
 5. Once the goal is reached, the node exploration and path will be visualised using opencv.
 6. After the visualization, the turtlebot3 will start moving to the goal location.
 
@@ -51,4 +51,7 @@ UID - 119091586
 
 Github Repo - https://github.com/Surya-Sriramoju/A-star-for-differential-drive-robot
 
-link to the video: https://drive.google.com/file/d/1PLs5c8GCXTIwWq1v8pyAN5shnO4Z0-_v/view?usp=sharing
+link to the video: 
+* Part 1: https://drive.google.com/file/d/1YUwDJA55Mi58GMRdZ81Du392SIRcXdfm/view?usp=sharing
+* Part 2: https://drive.google.com/file/d/1XgQOXYi0GzfUdhCxMrqEMVNwKaZDNoDb/view?usp=sharing
+
