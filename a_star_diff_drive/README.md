@@ -15,22 +15,6 @@ libraries used in this algorithm
 * rospy
 * geometry_msgs
 
-package directory structure
-
-a_star_diff_drive
-|- launch/
-|- src|
-|     |-astar.py
-|     |-map.py
-|     |-ros_messenger.py
-|     |-ros_messenger.py
-|
-|-source_code.py
-|map|
-|   |-map.world
-|-package.xml
-|-README.md
-
 # Stepts to run the algorithm
 1. Paste the a_star_diff_drive in the src folder of ros workspace
 2. build the package using catkin_make
