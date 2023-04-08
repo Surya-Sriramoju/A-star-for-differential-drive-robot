@@ -10,7 +10,7 @@ Dependencies required:
 libraries used in this algorithm
 * numpy
 * opencv
-* queue
+* heapq
 * time
 * rospy
 * geometry_msgs
